@@ -47,24 +47,23 @@ class Server:
 
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
-        next_page = page + 1
-        prev_page = page - 1
+        
+        next_page = page + 1 if page + 1 <= len(self.dataset()) // page_size else None
+        prev_page = page - 1 if page > 1 else None 
+
 
         dataset = self.dataset()
 
-        start_index, end_index = index_range(page, page_size)
+        dataset_pages = self.get_page(page=page, page_size=page_size)
 
         total_pages = len(dataset) // page_size
 
-        if next_page > end_index or prev_page == 0:
-            return None
 
-        return "page_size: {}, page: {}, data: {}, next_page: {}, "\
-        "prev_page: {}, total_pages: {}".format(page_size, page,
-                                           str(get_page(
-                                                self,
-                                                page=1,
-                                                page_size=10)),
-                                           next_page,
-                                           prev_page,
-                                           total_pages)
+        return {
+            "page_size": len(dataset_pages),
+            "page": page,
+            "data": dataset_pages,
+            "next_page": next_page,
+            "prev_page": prev_page,
+            "total_pages": total_pages
+        }

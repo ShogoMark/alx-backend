@@ -45,22 +45,21 @@ class Server:
 
         return dataset[start_index:end_index]
 
-
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """function takes in arguments page&page size to return a dict"""
         assert isinstance(page, int) and page > 0
         assert isinstance(page_size, int) and page_size > 0
-        
-        next_page = page + 1 if page + 1 <= len(self.dataset()) // page_size else None
-        prev_page = page - 1 if page > 1 else None 
 
+        next_page = page + 1 if page + 1 <= len(
+                                                self.dataset()) // page_size
+        else None
+        prev_page = page - 1 if page > 1 else None
 
         dataset = self.dataset()
 
         dataset_pages = self.get_page(page=page, page_size=page_size)
 
         total_pages = len(dataset) // page_size
-
 
         return {
             "page_size": len(dataset_pages),

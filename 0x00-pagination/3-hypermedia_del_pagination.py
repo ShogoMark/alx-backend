@@ -45,28 +45,31 @@ class Server:
 
     # If index is not provided or is out of range, set it to 0
         if index is None or not 0 <= index < dataset_length:
-        	index = 0
+            index = 0
 
     # Calculate the next index to query with
         next_index = min(index + page_size, dataset_length)
 
     # Get the current page of data from the dataset
-        current_page_data = [self.indexed_dataset().get(i) for i in range(index, next_index)]
+        current_page_data = [self.indexed_dataset().get(i)
+                             for i in range(index, next_index)]
 
     # Check if any items were deleted between index and next_index
-        deleted_items = [i for i in range(index, next_index) if self.indexed_dataset().get(i) is None]
+        deleted_items = [i for i in range(index, next_index)
+                         if self.indexed_dataset().get(i) is None]
 
-    # If there were deleted items, adjust the next_index and get the current page data again
+    # If there were deleted items, adjust the next_index
         if deleted_items:
             next_index += len(deleted_items)
-            current_page_data = [self.indexed_dataset().get(i) for i in range(index, next_index)]
+            current_page_data = [self.indexed_dataset().get(i)
+                                 for i in range(index, next_index)]
 
     # Create the result dictionary
         result = {
-        	"index": index,
-        	"next_index": next_index,
-        	"page_size": page_size,
-        	"data": current_page_data
-		}
+            "index": index,
+            "next_index": next_index,
+            "page_size": page_size,
+            "data": current_page_data
+        }
 
         return result

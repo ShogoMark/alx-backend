@@ -12,8 +12,13 @@ class FIFOCache(BaseCaching):
         """functions takes in key and item"""
         if key is None or item is None:
             pass
-        else:
-            self.cache_data[key] = item
+
+        if len(self.cache_data) >= self.MAX_ITEMS:
+            old_key = next(iter(self.cache_data))
+            del self.cache_data[old_key]
+            print("DISCARD: {}".format(old_key))
+
+        self.cache_data[key] = item
 
     def get(self, key):
         """function takes in key as argument"""

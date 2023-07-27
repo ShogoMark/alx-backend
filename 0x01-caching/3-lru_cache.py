@@ -29,6 +29,6 @@ class LRUCache(BaseCaching):
         """function takes in key as argument"""
         if key is None or key not in self.cache_data:
             return None
-        
+
         self.cache_data.move_to_end(key)
         return self.cache_data[key]

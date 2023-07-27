@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """A FIFOCache that inherits from BaseCaching"""
 
 from base_caching import BaseCaching
@@ -8,6 +8,7 @@ from collections import OrderedDict
 class FIFOCache(BaseCaching):
     """class inherits from BaseCaching"""
     def __init__(self):
+        """initialize the function"""
         super().__init__()
         self.cache_data = OrderedDict()
 

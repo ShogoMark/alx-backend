@@ -22,6 +22,7 @@ class FIFOCache(BaseCaching):
 
     def get(self, key):
         """function takes in key as argument"""
-        if key == keys:
-            return self.cache_data[key]
+        for keys in key:
+            if key == keys:
+                return self.cache_data[key]
         return None

@@ -26,11 +26,11 @@ class LFUCache(BaseCaching):
             if len(self.cache_data) >= self.MAX_ITEMS:
                 # if cache is full, delete the least frequent used item
                 while self.freq_heap:
-                freq, lfu_key = heapq.heappop(self.freq_heap)
-                if self.freq_counter[lfu_key] == freq:
-                    del self.cache_data[lfu_key]
-                    del self.freq_counter[lfu_key]
-                    break
+                    freq, lfu_key = heapq.heappop(self.freq_heap)
+                    if self.freq_counter[lfu_key] == freq:
+                        del self.cache_data[lfu_key]
+                        del self.freq_counter[lfu_key]
+                        break
 
         # add the new item to the cache with frequency 1
         self.cache_data[key] = item

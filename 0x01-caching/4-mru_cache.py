@@ -1,11 +1,11 @@
 #!/usr/bin/python3
-"""A LRUCache that inherits from BaseCaching"""
+"""A MRUCache that inherits from BaseCaching"""
 
 from base_caching import BaseCaching
 from collections import OrderedDict
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """class inherits from BaseCaching"""
     def __init__(self):
         """initialize the function"""
@@ -21,8 +21,8 @@ class LRUCache(BaseCaching):
             self.cache_data.move_to_end(key)
         else:
             if len(self.cache_data) >= self.MAX_ITEMS:
-                least_used_key, _ = self.cache_data.popitem(last=False)
-                print("DISCARD:", least_used_key)
+                most_used_key, _ = self.cache_data.popitem(last=True)
+                print("DISCARD:", most_used_key)
         self.cache_data[key] = item
 
     def get(self, key):

@@ -11,7 +11,6 @@ class FIFOCache(BaseCaching):
         super().__init__()
         self.cache_data = OrderedDict()
 
-
     def put(self, key, item):
         """functions takes in key and item"""
         if key is None or item is None:

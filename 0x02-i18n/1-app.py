@@ -9,6 +9,7 @@ app: Flask = Flask(__name__)
 
 
 class Config:
+    """Class config to instantiate attributes"""
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'

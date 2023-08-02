@@ -32,7 +32,7 @@ def index() -> str:
     home_title = gettext("Welcome to Holberton")
     home_header = gettext("Hello world!")
     return render_template('3-index.html', title=home_title,
-            header=home_header)
+                           header=home_header)
 
 
 if __name__ == '__main__':

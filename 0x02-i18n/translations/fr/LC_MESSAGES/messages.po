@@ -3,10 +3,10 @@
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
-msgid "home_/title"
+msgid "home_title"
 msgstr "Bienvenue chez Holberton"
 
-msgid "home_/header"
+msgid "home_header"
 msgstr "Bonjour monde!"
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"

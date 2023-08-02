@@ -2,7 +2,6 @@
 """A flask app"""
 
 from flask import Flask, render_template
-from flask.wrappers import Response
 from flask_babel import Babel
 
 app: Flask = Flask(__name__)
